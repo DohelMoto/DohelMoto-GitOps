@@ -8,7 +8,7 @@ spec:
   sources:
   - repoURL: https://github.com/DohelMoto/DohelMoto-GitOps.git
     targetRevision: HEAD
-      ref: values
+    ref: values
   - repoURL: https://github.com/DohelMoto/DohelMoto.git
     targetRevision: HEAD
     path: helm
