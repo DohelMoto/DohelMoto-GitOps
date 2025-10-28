@@ -1,26 +1,26 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argocd-application
+  name: kube-prometheus-stack-staging
   namespace: argocd
 spec:
   project: default
   sources:
-    - repoURL: git@github.com:DohelMoto/DohelMoto-GitOps.git
-      targetRevision: HEAD
-      ref: values
-    - repoURL: git@github.com:DohelMoto/DohelMoto.git
-      targetRevision: HEAD
-      path: my-helm
+    - repoURL: https://prometheus-community.github.io/helm-charts
+      chart: kube-prometheus-stack
+      targetRevision: 61.1.0
       helm:
         valueFiles:
-          - $values/environments/prod/values.yaml
+          - $values/environments/staging/monitoring/values-staging.yaml
   destination:
     server: https://kubernetes.default.svc
-    namespace: default
+    namespace: monitoring
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
+  revisionHistoryLimit: 3
+
+
