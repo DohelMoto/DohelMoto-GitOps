@@ -7,10 +7,10 @@ spec:
   project: default
   sources:
     - repoURL: git@github.com:DohelMoto/DohelMoto-GitOps.git
-      targetRevision: HEAD
+      targetRevision: main
       ref: values
     - repoURL: git@github.com:DohelMoto/DohelMoto.git
-      targetRevision: HEAD
+      targetRevision: main
       path: my-helm
       helm:
         valueFiles:

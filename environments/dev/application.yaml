@@ -1,26 +1,31 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argocd-application
+  name: dohelmoto-dev
   namespace: argocd
 spec:
   project: default
+
   sources:
     - repoURL: git@github.com:DohelMoto/DohelMoto-GitOps.git
-      targetRevision: HEAD
+      targetRevision: dev     # חשוב! כאן dev
       ref: values
+
     - repoURL: git@github.com:DohelMoto/DohelMoto.git
-      targetRevision: HEAD
+      targetRevision: dev
       path: my-helm
       helm:
         valueFiles:
           - $values/environments/dev/values.yaml
+
   destination:
     server: https://kubernetes.default.svc
     namespace: default
+
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
+

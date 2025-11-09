@@ -1,10 +1,10 @@
-# kube-prometheus-stack values for staging environment
+# kube-prometheus-stack values for development environment
 release: monitoring
 
 prometheus:
   enabled: true
   prometheusSpec:
-    retention: 7d
+    retention: 24h
     storageSpec:
       volumeClaimTemplate:
         spec:
@@ -12,29 +12,29 @@ prometheus:
           storageClassName: local-path
           resources:
             requests:
-              storage: 50Gi
+              storage: 10Gi
     resources:
       requests:
-        cpu: 500m
-        memory: 2Gi
+        cpu: 200m
+        memory: 512Mi
       limits:
-        cpu: 2000m
-        memory: 4Gi
+        cpu: 500m
+        memory: 1Gi
 
 grafana:
   enabled: true
-  adminPassword: staging-password  # Change in production!
+  adminPassword: admin  # Change in production!
   persistence:
     enabled: true
-    size: 20Gi
+    size: 5Gi
     storageClassName: local-path
   resources:
     requests:
-      cpu: 200m
-      memory: 512Mi
+      cpu: 100m
+      memory: 128Mi
     limits:
-      cpu: 500m
-      memory: 1Gi
+      cpu: 200m
+      memory: 256Mi
   dashboardProviders:
     dashboardproviders.yaml:
       apiVersion: 1
@@ -56,11 +56,11 @@ grafana:
 prometheusOperator:
   resources:
     requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
       cpu: 200m
       memory: 256Mi
-    limits:
-      cpu: 500m
-      memory: 512Mi
 
 # ServiceMonitor discovery
 defaultRules:
