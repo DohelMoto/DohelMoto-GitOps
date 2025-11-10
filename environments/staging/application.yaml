@@ -17,7 +17,7 @@ spec:
           - $values/environments/staging/values.yaml
   destination:
     server: https://kubernetes.default.svc
-    namespace: default
+    namespace: ecommerce
   syncPolicy:
     automated:
       prune: true
