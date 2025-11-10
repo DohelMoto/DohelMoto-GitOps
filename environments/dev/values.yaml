@@ -11,7 +11,7 @@ frontend:
   enabled: true
   image:
     repository: dohelmoto-frontend
-    tag: f6c79ee5b040df006c2251f59da15808074cdb74
+    tag: d616e81974e654a281df19dc4d7e54e12a32f549
     pullPolicy: Always
   replicaCount: 1
   service:
@@ -43,7 +43,7 @@ backend:
   enabled: true
   image:
     repository: dohelmoto-backend
-    tag: f6c79ee5b040df006c2251f59da15808074cdb74
+    tag: d616e81974e654a281df19dc4d7e54e12a32f549
     pullPolicy: Always
   replicaCount: 1
   service:
@@ -76,7 +76,7 @@ postgresql:
   enabled: false
   image:
     repository: postgres
-    tag: f6c79ee5b040df006c2251f59da15808074cdb74
+    tag: d616e81974e654a281df19dc4d7e54e12a32f549
 
     pullPolicy: IfNotPresent
   replicaCount: 1
@@ -105,7 +105,7 @@ redis:
   enabled: false
   image:
     repository: redis
-    tag: f6c79ee5b040df006c2251f59da15808074cdb74
+    tag: d616e81974e654a281df19dc4d7e54e12a32f549
 
     pullPolicy: IfNotPresent
   replicaCount: 1
