@@ -11,7 +11,7 @@ frontend:
   enabled: true
   image:
     repository: dohelmoto-frontend
-    tag: 810911954315167042d26d8b56e289bbd0812fad
+    tag: 25208c55ebb6184f9da10af1c728311927b36014
     pullPolicy: Always
   replicaCount: 1
   service:
@@ -43,7 +43,7 @@ backend:
   enabled: true
   image:
     repository: dohelmoto-backend
-    tag: 810911954315167042d26d8b56e289bbd0812fad
+    tag: 25208c55ebb6184f9da10af1c728311927b36014
     pullPolicy: Always
   replicaCount: 1
   service:
@@ -73,10 +73,11 @@ backend:
     LOG_LEVEL: "debug"
 
 postgresql:
-  enabled: true
+  enabled: false
   image:
     repository: postgres
-    tag: 810911954315167042d26d8b56e289bbd0812fad
+    tag: latest
+
     pullPolicy: IfNotPresent
   replicaCount: 1
   service:
@@ -101,10 +102,11 @@ postgresql:
     PGDATA: "/var/lib/postgresql/data/pgdata"
 
 redis:
-  enabled: true
+  enabled: false
   image:
     repository: redis
-    tag: 810911954315167042d26d8b56e289bbd0812fad
+    tag: latest
+
     pullPolicy: IfNotPresent
   replicaCount: 1
   service:
