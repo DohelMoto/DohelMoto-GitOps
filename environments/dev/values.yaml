@@ -3,12 +3,12 @@ global:
   imagePullSecrets: []
   storageClass: "local-path"
 image:
-  registry: 463470983018.dkr.ecr.us-east-1.amazonaws.com
+  registry: 376129883917.dkr.ecr.us-east-1.amazonaws.com
   pullPolicy: Always
 frontend:
   enabled: true
   image:
-    repository: dohelmoto-frontend
+    repository: ecommerce/dohelmoto-frontend
     tag: f94eaf93761ef93489e84bdd0db3e477ad3eaef0
     pullPolicy: Always
   replicaCount: 1
@@ -39,7 +39,7 @@ frontend:
 backend:
   enabled: true
   image:
-    repository: dohelmoto-backend
+    repository: ecommerce/dohelmoto-backend
     tag: f94eaf93761ef93489e84bdd0db3e477ad3eaef0
     pullPolicy: Always
   replicaCount: 1
