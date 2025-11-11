@@ -2,11 +2,9 @@ global:
   imageRegistry: ""
   imagePullSecrets: []
   storageClass: "local-path"
-
 image:
   registry: 463470983018.dkr.ecr.us-east-1.amazonaws.com
   pullPolicy: Always
-
 frontend:
   enabled: true
   image:
@@ -38,7 +36,6 @@ frontend:
     REACT_APP_API_URL: "/api"
     REACT_APP_API_URL_PUBLIC: "/api"
     NODE_ENV: "development"
-
 backend:
   enabled: true
   image:
@@ -71,13 +68,11 @@ backend:
   env:
     NODE_ENV: "development"
     LOG_LEVEL: "debug"
-
 postgresql:
   enabled: false
   image:
     repository: postgres
     tag: f94eaf93761ef93489e84bdd0db3e477ad3eaef0
-
     pullPolicy: IfNotPresent
   replicaCount: 1
   service:
@@ -100,13 +95,11 @@ postgresql:
     POSTGRES_DB: "ecommerce_db"
     POSTGRES_USER: "ecommerce_user"
     PGDATA: "/var/lib/postgresql/data/pgdata"
-
 redis:
   enabled: false
   image:
     repository: redis
     tag: f94eaf93761ef93489e84bdd0db3e477ad3eaef0
-
     pullPolicy: IfNotPresent
   replicaCount: 1
   service:
@@ -128,7 +121,6 @@ redis:
   configuration: |
     maxmemory 128mb
     maxmemory-policy allkeys-lru
-
 ingress:
   enabled: true
   className: "nginx"
@@ -157,13 +149,11 @@ ingress:
             name: frontend-service
             port: 80
   tls: []
-
 service:
   type: LoadBalancer
   ports:
     http: 80
     https: 443
-
 configMap:
   data:
     DATABASE_URL: "postgresql://ecommerce_user:password@postgres-service:5432/ecommerce_db"
@@ -174,7 +164,6 @@ configMap:
     ACCESS_TOKEN_EXPIRE_MINUTES: "30"
     NODE_ENV: "development"
     LOG_LEVEL: "debug"
-
 secret:
   data:
     SECRET_KEY: "eW91ci1zZWNyZXQta2V5LWNoYW5nZS1pbi1wcm9kdWN0aW9u"
@@ -188,13 +177,11 @@ secret:
     STRIPE_PUBLISHABLE_KEY: "eW91ci1zdHJpcGUtcHVibGlzaGFibGUta2V5"
     POSTGRES_PASSWORD: "cGFzc3dvcmQ="
     REACT_APP_STRIPE_PUBLISHABLE_KEY: "eW91ci1zdHJpcGUtcHVibGlzaGFibGUta2V5"
-
 ecrSecret:
   enabled: true
   name: "ecr-registry-secret"
   server: "463470983018.dkr.ecr.us-east-1.amazonaws.com"
   username: "AWS"
-
 healthChecks:
   enabled: true
   livenessProbe:
@@ -207,11 +194,15 @@ healthChecks:
     periodSeconds: 5
     timeoutSeconds: 3
     failureThreshold: 3
-
 securityContext:
   runAsNonRoot: false
   runAsUser: 0
   allowPrivilegeEscalation: false
   capabilities:
     drop:
-    - ALL
+      - ALL
+images:
+  backend:
+    tag: 7d8a5a7ecb6f145725d83fa6215c45910bcab7ff
+  frontend:
+    tag: 7d8a5a7ecb6f145725d83fa6215c45910bcab7ff
