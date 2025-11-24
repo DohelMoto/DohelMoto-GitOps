@@ -203,6 +203,6 @@ securityContext:
       - ALL
 images:
   backend:
-    tag: f96cbd740fbdd6d0860d5ac282b448bc05b94e5a
+    tag: 14916cec551dffeef091ead3a4fdc22f968d4a62
   frontend:
-    tag: f96cbd740fbdd6d0860d5ac282b448bc05b94e5a
+    tag: 14916cec551dffeef091ead3a4fdc22f968d4a62
