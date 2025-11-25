@@ -9,7 +9,7 @@ frontend:
   enabled: true
   image:
     repository: ecommerce/dohelmoto-frontend
-    tag: 209138fe4979685ec4c1214cc4eb09515afb8f41
+    tag: f94eaf93761ef93489e84bdd0db3e477ad3eaef0
     pullPolicy: Always
   replicaCount: 1
   service:
@@ -40,7 +40,7 @@ backend:
   enabled: true
   image:
     repository: ecommerce/dohelmoto-backend
-    tag: 209138fe4979685ec4c1214cc4eb09515afb8f41
+    tag: f94eaf93761ef93489e84bdd0db3e477ad3eaef0
     pullPolicy: Always
   replicaCount: 1
   service:
@@ -125,7 +125,8 @@ ingress:
   enabled: true
   className: "nginx"
   annotations:
-    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    cert-manager.io/cluster-issuer: "letsencrypt-http01"
     nginx.ingress.kubernetes.io/cors-allow-origin: "http://localhost:3000,http://localhost:80,http://localhost,http://localhost:30080,https://dohelmoto-dev.com"
     nginx.ingress.kubernetes.io/cors-allow-methods: "GET, POST, PUT, DELETE, OPTIONS"
     nginx.ingress.kubernetes.io/cors-allow-headers: "DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization"
@@ -152,7 +153,10 @@ ingress:
           service:
             name: frontend-service
             port: 80
-  tls: []
+  tls:
+    - hosts:
+        - dohelmoto-dev.com
+      secretName: dohelmoto-dev-tls
 service:
   type: LoadBalancer
   ports:
@@ -207,6 +211,6 @@ securityContext:
       - ALL
 images:
   backend:
-    tag: 14916cec551dffeef091ead3a4fdc22f968d4a62
+    tag: 7d8a5a7ecb6f145725d83fa6215c45910bcab7ff
   frontend:
-    tag: 14916cec551dffeef091ead3a4fdc22f968d4a62
+    tag: 7d8a5a7ecb6f145725d83fa6215c45910bcab7ff
