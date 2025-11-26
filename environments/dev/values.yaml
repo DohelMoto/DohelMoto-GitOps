@@ -1,7 +1,7 @@
 global:
   imageRegistry: ""
   imagePullSecrets: []
-  storageClass: "local-path"
+  storageClass: "gp3"
 image:
   registry: 376129883917.dkr.ecr.us-east-1.amazonaws.com
   pullPolicy: Always
@@ -89,7 +89,7 @@ postgresql:
   persistence:
     enabled: true
     size: 10Gi
-    storageClass: ""
+    storageClass: "gp3"
     accessMode: ReadWriteOnce
   env:
     POSTGRES_DB: "ecommerce_db"
