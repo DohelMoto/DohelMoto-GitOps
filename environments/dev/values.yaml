@@ -69,7 +69,7 @@ backend:
     NODE_ENV: "development"
     LOG_LEVEL: "debug"
 postgresql:
-  enabled: false
+  enabled: true
   image:
     repository: postgres
     tag: f94eaf93761ef93489e84bdd0db3e477ad3eaef0
