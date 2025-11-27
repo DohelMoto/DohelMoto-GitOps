@@ -7,7 +7,7 @@ frontend:
   enabled: true
   image:
     repository: ecommerce/dohelmoto-frontend
-    tag: f94eaf93761ef93489e84bdd0db3e477ad3eaef0
+    tag: 5d5170e2897019946f0da9025034790c9d40a350
     pullPolicy: Always
   replicaCount: 1
   service:
@@ -35,7 +35,7 @@ backend:
   enabled: true
   image:
     repository: ecommerce/dohelmoto-backend
-    tag: f94eaf93761ef93489e84bdd0db3e477ad3eaef0
+    tag: 5d5170e2897019946f0da9025034790c9d40a350
     pullPolicy: Always
   replicaCount: 1
   service:
