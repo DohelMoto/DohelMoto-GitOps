@@ -1,6 +1,4 @@
 global:
-  imageRegistry: ""
-  imagePullSecrets: []
   storageClass: "gp3"
 image:
   registry: 376129883917.dkr.ecr.us-east-1.amazonaws.com
@@ -9,7 +7,7 @@ frontend:
   enabled: true
   image:
     repository: ecommerce/dohelmoto-frontend
-    tag: 777e8ceb318eabd3ab949a597bd448b043549331
+    tag: f94eaf93761ef93489e84bdd0db3e477ad3eaef0
     pullPolicy: Always
   replicaCount: 1
   service:
@@ -29,9 +27,6 @@ frontend:
     maxReplicas: 3
     targetCPUUtilizationPercentage: 70
     targetMemoryUtilizationPercentage: 80
-  nodeSelector: {}
-  tolerations: []
-  affinity: {}
   env:
     REACT_APP_API_URL: "/api"
     REACT_APP_API_URL_PUBLIC: "/api"
@@ -40,7 +35,7 @@ backend:
   enabled: true
   image:
     repository: ecommerce/dohelmoto-backend
-    tag: 777e8ceb318eabd3ab949a597bd448b043549331
+    tag: f94eaf93761ef93489e84bdd0db3e477ad3eaef0
     pullPolicy: Always
   replicaCount: 1
   service:
@@ -60,9 +55,6 @@ backend:
     maxReplicas: 3
     targetCPUUtilizationPercentage: 70
     targetMemoryUtilizationPercentage: 80
-  nodeSelector: {}
-  tolerations: []
-  affinity: {}
   podLabels:
     environment: dev
   env:
@@ -116,7 +108,6 @@ redis:
   persistence:
     enabled: true
     size: 5Gi
-    storageClass: ""
     accessMode: ReadWriteOnce
   configuration: |
     maxmemory 128mb
@@ -217,8 +208,3 @@ securityContext:
   capabilities:
     drop:
       - ALL
-images:
-  backend:
-    tag: 7d8a5a7ecb6f145725d83fa6215c45910bcab7ff
-  frontend:
-    tag: 7d8a5a7ecb6f145725d83fa6215c45910bcab7ff

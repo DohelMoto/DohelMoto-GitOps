@@ -1,6 +1,4 @@
 global:
-  imageRegistry: ""
-  imagePullSecrets: []
   storageClass: "local-path"
 
 image:
@@ -31,9 +29,6 @@ frontend:
     maxReplicas: 15
     targetCPUUtilizationPercentage: 70
     targetMemoryUtilizationPercentage: 80
-  nodeSelector: {}
-  tolerations: []
-  affinity: {}
   env:
     REACT_APP_API_URL: "/api"
     REACT_APP_API_URL_PUBLIC: "/api"
@@ -63,9 +58,6 @@ backend:
     maxReplicas: 15
     targetCPUUtilizationPercentage: 70
     targetMemoryUtilizationPercentage: 80
-  nodeSelector: {}
-  tolerations: []
-  affinity: {}
   env:
     NODE_ENV: "production"
     LOG_LEVEL: "warn"
@@ -91,7 +83,6 @@ postgresql:
   persistence:
     enabled: true
     size: 100Gi
-    storageClass: ""
     accessMode: ReadWriteOnce
   env:
     POSTGRES_DB: "ecommerce_db"
@@ -119,7 +110,6 @@ redis:
   persistence:
     enabled: true
     size: 50Gi
-    storageClass: ""
     accessMode: ReadWriteOnce
   configuration: |
     maxmemory 1gb
