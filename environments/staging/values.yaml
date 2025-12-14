@@ -7,7 +7,7 @@ frontend:
   enabled: true
   image:
     repository: dohelmoto-frontend
-    tag: 5d5170e2897019946f0da9025034790c9d40a350
+    tag: 96227f86823cb149291c31af246f62364fd11586
     pullPolicy: Always
   replicaCount: 2
   service:
@@ -35,7 +35,7 @@ backend:
   enabled: true
   image:
     repository: dohelmoto-backend
-    tag: 5d5170e2897019946f0da9025034790c9d40a350
+    tag: 96227f86823cb149291c31af246f62364fd11586
     pullPolicy: Always
   replicaCount: 1
   service:
